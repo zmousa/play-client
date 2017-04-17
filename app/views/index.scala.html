@@ -1,0 +1,27 @@
+@(message: String)
+
+@main("ES") {
+    <div>
+        <h1 style="text-align: center;">@message</h1>
+        <form action="@routes.HomeController.search()" method="post">
+            <div class="form-group" >
+                <input type="radio" name="searchType" value="searchTerm" checked> Term Search
+                <input type="radio" name="searchType" value="searchFuzzy"> Fuzzy Search
+            </div>
+            <div class="form-group">
+                <select name="field" class="form-control">
+                    <option value="normalizedText">Script</option>
+                    <option value="location.normalizedName">Location</option>
+                    <option value="episode.title">Episode Title</option>
+                    <option value="episode.imdbRating">Episode IMDB Rating</option>
+                    <option value="character.normalizedName">Character</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="term">Term:</label>
+                <input id="term" name="term" class="form-control" autofocus >
+            </div>
+            <button class="form-control btn btn-primary">Search</button>
+        </form>
+    </div>
+}
